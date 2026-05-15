@@ -1,0 +1,14 @@
+use_frameworks!
+
+platform :ios, '13.0'
+
+target 'DGCChatMessage_Example' do
+  pod 'DGCChatMessage', :path => '../'
+  pod 'DGCLog', :path => '../../DGCLog'
+
+  target 'DGCChatMessage_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

@@ -1,0 +1,30 @@
+{
+  "name": "DGCChatMessage",
+  "version": "0.1.0",
+  "summary": "A short description of DGCChatMessage.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/admin/DGCChatMessage",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "admin": "huan.xin@renrengame.com"
+  },
+  "source": {
+    "git": "https://github.com/admin/DGCChatMessage.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "DGCChatMessage/Classes/**/*",
+  "dependencies": {
+    "MGLog": [
+
+    ],
+    "TXIMSDK_Plus_iOS": [
+      "~> 7.8.5483"
+    ]
+  }
+}
