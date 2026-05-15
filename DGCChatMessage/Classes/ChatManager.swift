@@ -89,7 +89,7 @@ public class DGCChatManager {
     
     //安装SDK
     public func initSDK(config : ChatSDKConfig){
-        handler.initSDK(config: config)
+        dgc_handler.initSDK(config: config)
     }
     
     
@@ -101,7 +101,7 @@ public class DGCChatManager {
         }
         callInQueue {
             self.loginInfo = data
-            self.handler.login(login: data)
+            self.dgc_handler.login(login: data)
         }
     }
     
@@ -114,18 +114,18 @@ public class DGCChatManager {
             self.isFinished = false
             self.page = 0
             self.loginInfo = ChatLoginData()
-            self.handler.logout()
+            self.dgc_handler.logout()
         }
         
     }
     
     /// 更新自己的个人信息
     public func updateMineInfo(faceUrl: String? = nil, nickName: String? = nil, succ: ChatEmptyBlock? = nil, fail: ChatFailBlock? = nil) {
-        handler.updateMineInfo(nickName: nickName, faceUrl: faceUrl, succ: succ, fail: fail)
+        dgc_handler.updateMineInfo(nickName: nickName, faceUrl: faceUrl, succ: succ, fail: fail)
     }
     
     // 是否登录
-    public var isLogin : Bool{handler.isLogin}
+    public var isLogin : Bool{dgc_handler.isLogin}
     
 
     
@@ -162,16 +162,16 @@ public class DGCChatManager {
     
     /// 查找消息 通过msgID
     public func findMessage(msgID : String,success: @escaping ChatDataBlock<DGCChatMsg>, fail: ChatFailBlock?){
-        handler.findMessage(msgID: msgID, success: success, fail: fail)
+        dgc_handler.findMessage(msgID: msgID, success: success, fail: fail)
     }
     
     // MARK: 内部 -- 属性、方法
     private init() {
         queue.setSpecific(key: dgc_queueKey, value: 10)
-        handler.delegate = self
+        dgc_handler.delegate = self
     }
     
-    private(set) var handler : ChatHandlerProtocol = DGCChatTencentHandler()
+    private(set) var dgc_handler : ChatHandlerProtocol = DGCChatTencentHandler()
     /// 队列
     let queue = DispatchQueue(label: "DGCChatManager.queue")
     private let dgc_queueKey = DispatchSpecificKey<Int>()

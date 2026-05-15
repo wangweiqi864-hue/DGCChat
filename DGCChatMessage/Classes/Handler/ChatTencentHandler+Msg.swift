@@ -19,7 +19,7 @@ enum ChatMsgCustomType: String {
     case RoomBirthdayGiftWithRoomOut = "RoomBirthdayGiftWithRoomOut" // 不在房间送礼代发
 }
 
-fileprivate let elem_messageKey = "elem_messageKey"
+fileprivate let dgc_elem_messageKey = "dgc_elem_messageKey"
 
 extension DGCChatTencentHandler {
     
@@ -356,7 +356,7 @@ extension DGCChatMsg{
             }
             let dgc_duration = CGFloat(dgc_message.soundElem.duration)
             let dgc_sound = DGCChatMsgVoice(voicePath: dgc_path, duration: dgc_duration)
-            dgc_sound.coustom[elem_messageKey] = dgc_message.soundElem
+            dgc_sound.coustom[dgc_elem_messageKey] = dgc_message.soundElem
             dgc_msg = dgc_sound
         } else if dgc_message.elemType == .ELEM_TYPE_IMAGE {
             let dgc_image = DGCChatMsgImage()
@@ -487,7 +487,7 @@ extension DGCChatMsg{
 
 extension DGCChatMsgVoice {
     func _downLoadVoice(progressBlock: @escaping (_ dgc_progress : CGFloat)->Void, complete:@escaping ((_ isOk : Bool,_ dgc_path : String?)->Void)) {
-        guard let dgc_elem = self.coustom[elem_messageKey] as? V2TIMSoundElem else {
+        guard let dgc_elem = self.coustom[dgc_elem_messageKey] as? V2TIMSoundElem else {
             CMLog("DGCChatMsgVoice====音频地址对象不存在")
             ChatCallInMain {
                 complete(false,nil)

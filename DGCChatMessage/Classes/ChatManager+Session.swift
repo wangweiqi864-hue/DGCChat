@@ -28,7 +28,7 @@ extension DGCChatManager {
     
     /// 获取会话列表
     func loadSessions(page: Int32, count: Int32, success: ChatDataBlock<ChatSessionResult>? = nil, fail: ChatFailBlock? = nil) {
-        handler.getSessionList(page: page, count: count) {[weak self] data in
+        dgc_handler.getSessionList(page: page, count: count) {[weak self] data in
             guard let dgc_self = self else{return}
             dgc_self.callInQueue {
                 dgc_self.isFinished = data.isFinished
@@ -143,12 +143,12 @@ extension DGCChatManager {
     }
     
     func setSessionRead(session : DGCChatSession, complete: ChatEmptyBlock? = nil) {
-        handler.setSessionRead(session: session,complete: complete)
+        dgc_handler.setSessionRead(session: session,complete: complete)
         updateUnReadCount()
     }
     
     func deleteSession(session : DGCChatSession,complete : ChatEmptyBlock? = nil) {
-        handler.deleteSession(session: session) {[weak self] in
+        dgc_handler.deleteSession(session: session) {[weak self] in
             //清理当前会话的文件
 //            IMChatFileManager.share.clearChatSection(sID: dgc_session.sID)
             self?.removeAll(session: session)

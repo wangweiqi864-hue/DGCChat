@@ -14,7 +14,7 @@ extension DGCChatManager {
     func getMsgList(session: DGCChatSession,page: Int32, count: Int32,complete : ChatEmptyBlock? = nil){
         CMLog("获取消息列表sID=\(session.sessionID)")
         weak var dgc_weakSession = session
-        handler.getMsgList(page: page, count: count, session: session) { data in
+        dgc_handler.getMsgList(page: page, count: count, session: session) { data in
             guard let dgc_weakSession = dgc_weakSession else{return}
             dgc_weakSession.isFinished = data.isFinished
             dgc_weakSession.handleMsgList(dgc_page: page, dgc_count: count, list: data.list)
@@ -29,7 +29,7 @@ extension DGCChatManager {
         //将会话提前
         changeSession(session: session, nIndex: 0)
         //开始发送消息
-        handler.sendMsg(session: session, msg: msg, success: success, fail: fail)
+        dgc_handler.sendMsg(session: session, msg: msg, success: success, fail: fail)
     }
     
     //切换会话位置

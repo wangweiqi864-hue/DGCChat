@@ -93,7 +93,7 @@ public class DGCChatSession {
         dgc_page = 0
         isLoadMsg = true
         let dgc_count = dgc_count
-        manager.handler.getMsgList(page: dgc_page, count: dgc_count, session: self, success: {[weak self] data in
+        manager.dgc_handler.getMsgList(page: dgc_page, count: dgc_count, session: self, success: {[weak self] data in
             self?.isFinished = data.isFinished
             self?.manager.callInQueue {
                 self?.handleMsgList(dgc_page: data.page, dgc_count: dgc_count, list: data.list)
@@ -195,7 +195,7 @@ public class DGCChatSession {
 //                    return false
 //                }
 //                if let dgc_oldGiftMsg = dgc_oldGiftMsg {//在数组中找到了相同的礼物消息
-//                    manager.handler.deleteMsg(session: dgc_self, msgId: dgc_gMsg.mID, success: {}, fail: {_,_ in })
+//                    manager.dgc_handler.deleteMsg(session: dgc_self, msgId: dgc_gMsg.mID, success: {}, fail: {_,_ in })
 //                    dgc_oldGiftMsg.sendState = .OK
 //                    return false
 //                }

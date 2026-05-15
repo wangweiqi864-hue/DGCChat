@@ -33,7 +33,7 @@ extension DGCChatSession {
         }
         //将消息先移除在发送
         msgArr.removeAll(where: {$0.mID == dgc_msg.mID})
-        manager.handler.deleteMsg(session: self, msgId: dgc_msg.mID, success: {}, fail: {_,_ in })
+        manager.dgc_handler.deleteMsg(session: self, msgId: dgc_msg.mID, success: {}, fail: {_,_ in })
         manager.callInQueue {[weak self] in
             self?.dgc_sendMsg(dgc_msg, success: success, fail: fail)
         }

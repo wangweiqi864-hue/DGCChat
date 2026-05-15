@@ -63,7 +63,7 @@ public class DGCChatMsg {
     // 设置消息为已播放
     public func setMsgPlayedState() {
         self.playState = .Played
-        DGCChatManager.share.handler.setMsgPlayStatus(mId: mID, success: nil, fail: nil)
+        DGCChatManager.share.dgc_handler.setMsgPlayStatus(mId: mID, success: nil, fail: nil)
     }
     
     // 变更消息
@@ -74,7 +74,7 @@ public class DGCChatMsg {
     
     /// 修改消息
     public func modifyMessage() {
-        DGCChatManager.share.handler.modifyMessage(msg: self) {
+        DGCChatManager.share.dgc_handler.modifyMessage(msg: self) {
             
         } fail: { code, str in
             
